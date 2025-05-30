@@ -14,7 +14,8 @@ public class Programa {
         isabela.calcularSalarioHorasExtras(10, 5.60);
 
         System.out.println("Servidor: "+ isabela.getNome());
-        System.out.printf("horas extras R$ %.2f: "+ isabela.getHorasExtras());
-
+        System.out.println("salario: "+isabela.calcularSalarioTotal(2000));
+        System.out.printf("horas extras : R$"+ isabela.getHorasExtras());
+        isabela.calcularNumeros(1,2);
     }
 }

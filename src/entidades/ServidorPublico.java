@@ -16,8 +16,9 @@ public class ServidorPublico {
          String email;
         private double horasExtras;
 
+        private String lotacao;
+
         public double getHorasExtras() {
-                private;
                 return horasExtras;
         }
 
@@ -142,8 +143,24 @@ public class ServidorPublico {
         }
 
         public double calcularSalarioHorasExtras(double horasTrabalhadas, double valorHora){
-                double salarioMensal = salario + (horasTrabalhadas + valorHora);
+                double salarioMensal = salario + (horasTrabalhadas * valorHora);
                 this.horasExtras = salario = salarioMensal;
                 return (salarioMensal);
+        }
+
+        public double calcularSalarioTotal(double salario){
+
+                double salarioTotal = salario + (horasExtras);
+                return (salarioTotal);
+        }
+
+        public double calcularNumeros (double... numeros) {
+                double soma = 0;
+                for (double numero : numeros) {
+                        soma += numero;
+                }
+
+                System.out.println("A soma dos argumentos informados "+ soma);
+                return soma;
         }
 }
