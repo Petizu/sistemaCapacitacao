@@ -1,6 +1,16 @@
 package entidades;
 
 public class ServidorPublico {
+        public ServidorPublico(){}
+        public ServidorPublico(int matricula, String nome){
+                this.matricula = matricula;
+                this.nome = nome;
+        }
+        public ServidorPublico(int matricula, String nome, String cargo){
+                this.matricula = matricula;
+                this.nome = nome;
+                this.cargo = cargo;
+        }
         private int matricula;
         private String nome;
         private String foto;
@@ -13,16 +23,16 @@ public class ServidorPublico {
         private String telefone;
         private String celular;
         private String cpf;
-         String email;
-        private double horasExtras;
-
         private String lotacao;
+        private String email;
+        private  double horasExtras;
 
-        public double getHorasExtras() {
+
+        public double getHorasExtras(){
                 return horasExtras;
         }
 
-        public void setHorasExtras(double horasExtras) {
+        public void setHorasExtras(double horasExtras){
                 this.horasExtras = horasExtras;
         }
 
@@ -138,29 +148,31 @@ public class ServidorPublico {
                 this.cpf = cpf;
         }
 
-        {
-                this.cpf = cpf;
-        }
-
         public double calcularSalarioHorasExtras(double horasTrabalhadas, double valorHora){
-                double salarioMensal = salario + (horasTrabalhadas * valorHora);
-                this.horasExtras = salario = salarioMensal;
-                return (salarioMensal);
+                double salarioMensal = horasTrabalhadas*valorHora;
+                this.horasExtras = salarioMensal;
+                return salarioMensal;
         }
-
-        public double calcularSalarioTotal(double salario){
-
-                double salarioTotal = salario + (horasExtras);
-                return (salarioTotal);
+        //(1, 1, 2, 3)
+        public double calcularSalarioHorasExtraass(double valorHora, double... horasTrabalhadas){
+                double horasTotal = 0;
+                double salarioMensal = 0;
+                for(double somaHorasTrabalhadas : horasTrabalhadas){
+                        salarioMensal += somaHorasTrabalhadas*valorHora;
+                }
+                this.horasExtras = salarioMensal;
+                return salarioMensal;
         }
-
-        public double calcularNumeros (double... numeros) {
+        public double calcularSalario(double salario){
+                double novoSalario = salario + getHorasExtras();
+                return novoSalario;
+        }
+        public double calcularNumero(double... numeros){
                 double soma = 0;
-                for (double numero : numeros) {
+                for(double numero : numeros){
                         soma += numero;
                 }
-
-                System.out.println("A soma dos argumentos informados "+ soma);
+                System.out.println(soma);
                 return soma;
         }
 }
