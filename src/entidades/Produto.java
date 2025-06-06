@@ -1,20 +1,55 @@
-import java.util.Scanner;
+package entidades;
 
 public class Produto {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);System.err.println;
+    private String nome;
+    private int quantidade;
+    private double preco;
 
-        System.out.print("Nome do produto: ");
-        String nome = scanner.nextLine();
 
-        System.out.print("Preço: ");
-        double preco = scanner.nextDouble();
+    public double getPreco() {
+        return preco;
+    }
 
-        System.out.print("Quantidade: ");
-        int quantidade = scanner.nextInt();
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
 
-        System.out.printf("\nProduto: %s\nPreço: R$%.2f\nQuantidade: %d\n", nome, preco, quantidade);
+    public int getQuantidade() {
+        return quantidade;
+    }
 
-        scanner.close();
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Produto(String nome, double preco, int qntd){
+        setNome(nome);
+        setPreco(preco);
+        setQuantidade(qntd);
+    }
+    public double valorTotalEmEstoque(){
+        double total = getPreco()*getQuantidade();
+        return total;
+    }
+    public void adicionarProdutos(int quantidade){
+        setQuantidade(getQuantidade()+quantidade);
+        mostrarInformacoes();
+    }
+    public void removerProdutos(int quantidade){
+        setQuantidade(getQuantidade()-quantidade);
+        mostrarInformacoes();
+    }
+    public void mostrarInformacoes() {
+        System.out.printf("Dados atualizados: " + getNome() + ",R$ " + getPreco() + ", " + getQuantidade() + ", R$ %.2f", valorTotalEmEstoque());
+        System.out.println();
     }
 }
